@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
 class TextFormGlobal extends StatelessWidget {
-  const TextFormGlobal({Key? key, required this.controller}) : super(key: key);
+  const TextFormGlobal(
+      {Key? key,
+      required this.controller,
+      required this.text,
+      required this.textInputType,
+      required this.obscure})
+      : super(key: key);
   final TextEditingController controller;
+  final String text;
+  final TextInputType textInputType;
+  final bool obscure;
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +30,15 @@ class TextFormGlobal extends StatelessWidget {
       ),
       child: TextFormField(
         controller: controller,
-        keyboardType: TextInputType.emailAddress,
-        obscureText: true,
+        keyboardType: textInputType,
+        obscureText: obscure,
         decoration: InputDecoration(
-          hintText: 'Email',
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.all(0),
-          hintStyle: TextStyle(
-            height: 1,
-          )
-        ),
+            hintText: text,
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.all(0),
+            hintStyle: const TextStyle(
+              height: 1,
+            )),
       ),
     );
   }
